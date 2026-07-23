@@ -61,11 +61,16 @@ export default {
       aria-label="Toggle Goofy Music"
       title="Toggle Music"
     )
+      .p-utility-navi__equalizer(v-if="$store.state.isAudioPlaying")
+        span.p-utility-navi__eq-bar.p-utility-navi__eq-bar--1
+        span.p-utility-navi__eq-bar.p-utility-navi__eq-bar--2
+        span.p-utility-navi__eq-bar.p-utility-navi__eq-bar--3
+        span.p-utility-navi__eq-bar.p-utility-navi__eq-bar--4
       svg.p-utility-navi__sound-icon(
-        v-if="$store.state.isAudioPlaying"
+        v-else
         xmlns="http://www.w3.org/2000/svg"
-        width="15"
-        height="15"
+        width="18"
+        height="18"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -79,24 +84,6 @@ export default {
         circle(cx="9" cy="13" r="1.2" fill="currentColor")
         circle(cx="15" cy="13" r="1.2" fill="currentColor")
         path(d="M9 16c1.5 1.2 4.5 1.2 6 0")
-      svg.p-utility-navi__sound-icon(
-        v-else
-        xmlns="http://www.w3.org/2000/svg"
-        width="15"
-        height="15"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      )
-        path(d="M3 11a9 9 0 0 1 18 0")
-        rect(x="2" y="11" width="3" height="6" rx="1.5" fill="currentColor")
-        rect(x="19" y="11" width="3" height="6" rx="1.5" fill="currentColor")
-        circle(cx="9" cy="13" r="1.2" fill="currentColor")
-        circle(cx="15" cy="13" r="1.2" fill="currentColor")
-        line(x1="2" y1="2" x2="22" y2="22")
     router-link.p-utility-navi__label(
       to = '/who-i-am/'
       :class = 'classnames'
@@ -226,8 +213,8 @@ export default {
     top: 25px;
     right: 95px;
     z-index: 1000;
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     margin: 0;
     background: transparent;
@@ -269,28 +256,28 @@ export default {
     @include l-mobile {
       top: 16px;
       right: 75px;
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
     }
   }
   &__sound-icon {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     display: block;
     pointer-events: none;
-    filter: drop-shadow(0 0 4px rgba(220, 197, 162, 0.4));
+    filter: drop-shadow(0 0 5px rgba(220, 197, 162, 0.4));
     @include l-mobile {
-      width: 13px;
-      height: 13px;
+      width: 15px;
+      height: 15px;
     }
   }
   &__equalizer {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 3px;
-    width: 22px;
-    height: 18px;
+    gap: 2.5px;
+    width: 20px;
+    height: 16px;
     pointer-events: none;
     filter: drop-shadow(0 0 6px rgba(220, 197, 162, 0.5));
   }
@@ -300,27 +287,27 @@ export default {
     background-color: $color-text;
     border-radius: 1px;
     transform-origin: bottom;
-    animation: eqPulse 1s ease-in-out infinite alternate;
+    animation: eqPulse 0.9s ease-in-out infinite alternate;
 
     &--1 {
       height: 65%;
       animation-delay: 0s;
-      animation-duration: 0.75s;
+      animation-duration: 0.7s;
     }
     &--2 {
       height: 100%;
       animation-delay: 0.2s;
-      animation-duration: 0.95s;
+      animation-duration: 0.9s;
     }
     &--3 {
       height: 45%;
       animation-delay: 0.4s;
-      animation-duration: 0.8s;
+      animation-duration: 0.75s;
     }
     &--4 {
       height: 85%;
       animation-delay: 0.15s;
-      animation-duration: 1.1s;
+      animation-duration: 1.05s;
     }
   }
 }
