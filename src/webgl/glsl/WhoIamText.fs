@@ -14,7 +14,7 @@ void main() {
   float alphaDelay = (1.0 - (texColor.g + texColor.b) / 2.0) * 0.8;
 
   vec3 color = vec3(0.0);
-  float opacity = textMask * 0.4
+  float opacity = textMask * 0.45
     * smoothstep(0.0, 0.2, alphaShow - alphaDelay)
     * (1.0 - smoothstep(0.0, 0.2, alphaHide - alphaDelay));
 

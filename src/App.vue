@@ -39,21 +39,19 @@ export default {
   async created() {
     const { state, commit, dispatch } = this.$store;
 
-    const audioUrl = `${process.env.BASE_URL}music/background.mp3`;
-    this.bgm = new Audio(audioUrl);
-    this.bgm.loop = true;
-    this.bgm.volume = 0.8;
-
     const tryPlay = () => {
-      if (!this.bgm) return;
-      this.bgm
-        .play()
-        .then(() => {
-          commit('setAudioState', true);
-        })
-        .catch(() => {
-          // Autoplay blocked by browser policy until gesture occurs
-        });
+      const player = this.getBgmElement();
+      if (!player) return;
+      player.volume = 0.8;
+      player.loop = true;
+      const promise = player.play();
+      if (promise && promise.then) {
+        promise
+          .then(() => {
+            commit('setAudioState', true);
+          })
+          .catch(() => {});
+      }
     };
 
     const gestures = [
@@ -66,7 +64,8 @@ export default {
     ];
     const unlockHandler = () => {
       tryPlay();
-      if (this.bgm && !this.bgm.paused) {
+      const player = this.getBgmElement();
+      if (player && !player.paused) {
         gestures.forEach(evt => window.removeEventListener(evt, unlockHandler));
       }
     };
@@ -75,7 +74,9 @@ export default {
       window.addEventListener(evt, unlockHandler, { passive: true });
     });
 
-    tryPlay();
+    this.$nextTick(() => {
+      tryPlay();
+    });
 
     this.$root.$on('toggle-audio', this.toggleAudio);
 
@@ -102,9 +103,9 @@ export default {
   },
   destroyed() {
     this.$root.$off('toggle-audio', this.toggleAudio);
-    if (this.bgm) {
-      this.bgm.pause();
-      this.bgm = null;
+    const player = this.getBgmElement();
+    if (player) {
+      player.pause();
     }
   },
   computed: {
@@ -115,6 +116,21 @@ export default {
     }
   },
   methods: {
+    getBgmElement() {
+      const el = document.getElementById('bgm-player');
+      if (el) {
+        window._bgmAudio = el;
+        return el;
+      }
+      if (!this.bgm) {
+        const audioUrl = `${process.env.BASE_URL}music/background.mp3`;
+        this.bgm = new Audio(audioUrl);
+        this.bgm.loop = true;
+        this.bgm.volume = 0.8;
+        window._bgmAudio = this.bgm;
+      }
+      return this.bgm;
+    },
     update() {
       const { commit } = this.$store;
       const {
@@ -147,21 +163,19 @@ export default {
       commit('showView');
     },
     toggleAudio() {
-      if (!this.bgm) {
-        const audioUrl = `${process.env.BASE_URL}music/background.mp3`;
-        this.bgm = new Audio(audioUrl);
-        this.bgm.loop = true;
-        this.bgm.volume = 0.8;
-      }
-      if (this.bgm.paused) {
-        this.bgm
+      const player = this.getBgmElement();
+      if (!player) return;
+      if (player.paused) {
+        player.volume = 0.8;
+        player.muted = false;
+        player
           .play()
           .then(() => {
             this.$store.commit('setAudioState', true);
           })
           .catch(() => {});
       } else {
-        this.bgm.pause();
+        player.pause();
         this.$store.commit('setAudioState', false);
       }
     },
@@ -240,6 +254,7 @@ export default {
 
 <template lang="pug">
   div
+    audio#bgm-player(src="/music/background.mp3" loop preload="auto")
     GlobalTitle
     UtilityNavi
     WorksNavi

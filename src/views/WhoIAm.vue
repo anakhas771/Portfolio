@@ -211,12 +211,12 @@ export default {
         )
         p
           |Anyway, that's me.
-
         p
-          |Still coding. Still creating. Still pretending I know what I'm doing.
+          |Still coding. Still creating.
+        p
+          | Still pretending I know what I'm doing.
         p
           |One project at a time. One bug at a time.
-
         p
           |One "wait… why is this broken?" at a time.
         p

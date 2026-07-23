@@ -58,13 +58,14 @@ export default {
       type="button"
       @click="toggleSound"
       :class="soundClassnames"
-      aria-label="Toggle Spooky Music"
+      aria-label="Toggle Goofy Music"
+      title="Toggle Music"
     )
       svg.p-utility-navi__sound-icon(
         v-if="$store.state.isAudioPlaying"
         xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
+        width="15"
+        height="15"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -72,15 +73,17 @@ export default {
         stroke-linecap="round"
         stroke-linejoin="round"
       )
-        path(d="M9 18V5l12-2v13")
-        circle(cx="6" cy="18" r="3" fill="currentColor")
-        circle(cx="18" cy="16" r="3" fill="currentColor")
-        path(d="M21 9a4 4 0 0 1 0 6")
+        path(d="M3 11a9 9 0 0 1 18 0")
+        rect(x="2" y="11" width="3" height="6" rx="1.5" fill="currentColor")
+        rect(x="19" y="11" width="3" height="6" rx="1.5" fill="currentColor")
+        circle(cx="9" cy="13" r="1.2" fill="currentColor")
+        circle(cx="15" cy="13" r="1.2" fill="currentColor")
+        path(d="M9 16c1.5 1.2 4.5 1.2 6 0")
       svg.p-utility-navi__sound-icon(
         v-else
         xmlns="http://www.w3.org/2000/svg"
-        width="22"
-        height="22"
+        width="15"
+        height="15"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -88,9 +91,11 @@ export default {
         stroke-linecap="round"
         stroke-linejoin="round"
       )
-        path(d="M9 18V5l12-2v13")
-        circle(cx="6" cy="18" r="3")
-        circle(cx="18" cy="16" r="3")
+        path(d="M3 11a9 9 0 0 1 18 0")
+        rect(x="2" y="11" width="3" height="6" rx="1.5" fill="currentColor")
+        rect(x="19" y="11" width="3" height="6" rx="1.5" fill="currentColor")
+        circle(cx="9" cy="13" r="1.2" fill="currentColor")
+        circle(cx="15" cy="13" r="1.2" fill="currentColor")
         line(x1="2" y1="2" x2="22" y2="22")
     router-link.p-utility-navi__label(
       to = '/who-i-am/'
@@ -221,6 +226,8 @@ export default {
     top: 25px;
     right: 95px;
     z-index: 1000;
+    width: 24px;
+    height: 24px;
     padding: 0;
     margin: 0;
     background: transparent;
@@ -231,13 +238,14 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: auto;
 
     // Transition matching logo and Who I Am typography
     opacity: 0;
     transform: translate3d(-1.1em, 0, 0);
     transition-duration: 0.6s;
     transition-delay: 0.15s;
-    transition-property: transform, opacity;
+    transition-property: transform, opacity, filter;
     transition-timing-function: $easeOutCirc;
 
     &.is-shown {
@@ -246,8 +254,12 @@ export default {
     }
 
     &:hover {
-      transform: scale(1.2);
-      opacity: 0.85;
+      transform: translate3d(0, 0, 0) scale(1.18);
+      filter: drop-shadow(0 0 8px rgba(220, 197, 162, 0.7));
+    }
+
+    &:active {
+      transform: translate3d(0, 0, 0) scale(0.88);
     }
 
     &.is-playing {
@@ -257,18 +269,74 @@ export default {
     @include l-mobile {
       top: 16px;
       right: 75px;
+      width: 20px;
+      height: 20px;
     }
   }
   &__sound-icon {
-    width: 22px;
-    height: 22px;
+    width: 15px;
+    height: 15px;
     display: block;
     pointer-events: none;
-    filter: drop-shadow(0 0 6px rgba(220, 197, 162, 0.4));
+    filter: drop-shadow(0 0 4px rgba(220, 197, 162, 0.4));
     @include l-mobile {
-      width: 18px;
-      height: 18px;
+      width: 13px;
+      height: 13px;
     }
+  }
+  &__equalizer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3px;
+    width: 22px;
+    height: 18px;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(220, 197, 162, 0.5));
+  }
+  &__eq-bar {
+    width: 2px;
+    height: 100%;
+    background-color: $color-text;
+    border-radius: 1px;
+    transform-origin: bottom;
+    animation: eqPulse 1s ease-in-out infinite alternate;
+
+    &--1 {
+      height: 65%;
+      animation-delay: 0s;
+      animation-duration: 0.75s;
+    }
+    &--2 {
+      height: 100%;
+      animation-delay: 0.2s;
+      animation-duration: 0.95s;
+    }
+    &--3 {
+      height: 45%;
+      animation-delay: 0.4s;
+      animation-duration: 0.8s;
+    }
+    &--4 {
+      height: 85%;
+      animation-delay: 0.15s;
+      animation-duration: 1.1s;
+    }
+  }
+}
+
+@keyframes eqPulse {
+  0% {
+    transform: scaleY(0.25);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(0.35);
+    opacity: 0.7;
   }
 }
 </style>

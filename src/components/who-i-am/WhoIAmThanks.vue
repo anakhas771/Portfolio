@@ -8,12 +8,12 @@ export default {
   .p-whoiam-credit
     .p-whoiam-credit__line
     h2.p-whoiam-credit__heading
-      |Skills -
+      |Skillset -
     p.p-whoiam-credit__text
       |Frontend : React, JavaScript, HTML, CSS, Tailwind CSS, GSAP, Framer Motion, smooth scrolling, interactive animations, modern UI design
       br
       br
-      |Backend : Python, Django, Django REST Framework, Git, GitHub, PostgreSQL,MySQL
+      |Backend : Python, Django, Django REST Framework, Git, GitHub, PostgreSQL, MySQL
       br
       br
       |Tools : Git, GitHub, VS Code, Pycharm, AWS, Antigravity, claude
