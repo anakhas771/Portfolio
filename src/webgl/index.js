@@ -213,19 +213,6 @@ export default class WebGLContent {
       this.whoiamText.start(whoiamTextTex);
       this.bg.start(noiseTex);
     });
-
-    // show the dat.gui.
-    if (process.env.NODE_ENV === 'development') {
-      const initDatGui = await import('@/utils/initDatGui');
-
-      initDatGui.default(
-        this.skull,
-        this.petalRotateGroup,
-        petalHsv1,
-        petalHsv2,
-        petalHsv3
-      );
-    }
   }
   play() {
     clock.start();

@@ -32,11 +32,52 @@ export default {
       vTouchStart: new THREE.Vector2(),
       vTouchMoveStart: new THREE.Vector2(),
       vTouchMove: new THREE.Vector2(),
-      isTouchMoving: false
+      isTouchMoving: false,
+      bgm: null
     };
   },
   async created() {
     const { state, commit, dispatch } = this.$store;
+
+    const audioUrl = `${process.env.BASE_URL}music/background.mp3`;
+    this.bgm = new Audio(audioUrl);
+    this.bgm.loop = true;
+    this.bgm.volume = 0.8;
+
+    const tryPlay = () => {
+      if (!this.bgm) return;
+      this.bgm
+        .play()
+        .then(() => {
+          commit('setAudioState', true);
+        })
+        .catch(() => {
+          // Autoplay blocked by browser policy until gesture occurs
+        });
+    };
+
+    const gestures = [
+      'pointerdown',
+      'touchstart',
+      'click',
+      'mousemove',
+      'wheel',
+      'keydown'
+    ];
+    const unlockHandler = () => {
+      tryPlay();
+      if (this.bgm && !this.bgm.paused) {
+        gestures.forEach(evt => window.removeEventListener(evt, unlockHandler));
+      }
+    };
+
+    gestures.forEach(evt => {
+      window.addEventListener(evt, unlockHandler, { passive: true });
+    });
+
+    tryPlay();
+
+    this.$root.$on('toggle-audio', this.toggleAudio);
 
     document.body.append(state.canvas);
     state.canvas.style = `
@@ -58,6 +99,13 @@ export default {
     this.update();
     await dispatch('initWebGL');
     state.webgl.start();
+  },
+  destroyed() {
+    this.$root.$off('toggle-audio', this.toggleAudio);
+    if (this.bgm) {
+      this.bgm.pause();
+      this.bgm = null;
+    }
   },
   computed: {
     transitionName() {
@@ -97,6 +145,25 @@ export default {
       }
       state.webgl.play();
       commit('showView');
+    },
+    toggleAudio() {
+      if (!this.bgm) {
+        const audioUrl = `${process.env.BASE_URL}music/background.mp3`;
+        this.bgm = new Audio(audioUrl);
+        this.bgm.loop = true;
+        this.bgm.volume = 0.8;
+      }
+      if (this.bgm.paused) {
+        this.bgm
+          .play()
+          .then(() => {
+            this.$store.commit('setAudioState', true);
+          })
+          .catch(() => {});
+      } else {
+        this.bgm.pause();
+        this.$store.commit('setAudioState', false);
+      }
     },
     resize() {
       const { commit } = this.$store;

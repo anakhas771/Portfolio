@@ -29,6 +29,12 @@ export default {
       return {
         height: `${this.$store.state.scrollProgress * 100}%`
       };
+    },
+    soundClassnames() {
+      return {
+        'is-shown': this.$store.state.isShownUI === true,
+        'is-playing': this.$store.state.isAudioPlaying === true
+      };
     }
   },
   methods: {
@@ -38,6 +44,9 @@ export default {
     },
     leave() {
       this.isOvered = false;
+    },
+    toggleSound() {
+      this.$root.$emit('toggle-audio');
     }
   }
 };
@@ -45,6 +54,44 @@ export default {
 
 <template lang="pug">
   .p-utility-navi
+    button.p-utility-navi__sound(
+      type="button"
+      @click="toggleSound"
+      :class="soundClassnames"
+      aria-label="Toggle Spooky Music"
+    )
+      svg.p-utility-navi__sound-icon(
+        v-if="$store.state.isAudioPlaying"
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      )
+        path(d="M9 18V5l12-2v13")
+        circle(cx="6" cy="18" r="3" fill="currentColor")
+        circle(cx="18" cy="16" r="3" fill="currentColor")
+        path(d="M21 9a4 4 0 0 1 0 6")
+      svg.p-utility-navi__sound-icon(
+        v-else
+        xmlns="http://www.w3.org/2000/svg"
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      )
+        path(d="M9 18V5l12-2v13")
+        circle(cx="6" cy="18" r="3")
+        circle(cx="18" cy="16" r="3")
+        line(x1="2" y1="2" x2="22" y2="22")
     router-link.p-utility-navi__label(
       to = '/who-i-am/'
       :class = 'classnames'
@@ -167,6 +214,60 @@ export default {
       &.is-current {
         opacity: 1;
       }
+    }
+  }
+  &__sound {
+    position: fixed;
+    top: 25px;
+    right: 95px;
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    color: $color-text;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // Transition matching logo and Who I Am typography
+    opacity: 0;
+    transform: translate3d(-1.1em, 0, 0);
+    transition-duration: 0.6s;
+    transition-delay: 0.15s;
+    transition-property: transform, opacity;
+    transition-timing-function: $easeOutCirc;
+
+    &.is-shown {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+
+    &:hover {
+      transform: scale(1.2);
+      opacity: 0.85;
+    }
+
+    &.is-playing {
+      color: $color-text;
+    }
+
+    @include l-mobile {
+      top: 16px;
+      right: 75px;
+    }
+  }
+  &__sound-icon {
+    width: 22px;
+    height: 22px;
+    display: block;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(220, 197, 162, 0.4));
+    @include l-mobile {
+      width: 18px;
+      height: 18px;
     }
   }
 }

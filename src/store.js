@@ -40,11 +40,15 @@ export default new Vuex.Store({
     isMobile: false,
     isEnabledTouch: false,
     isTouchStarted: false,
-    isTouchMoving: false
+    isTouchMoving: false,
+    isAudioPlaying: false
   },
   mutations: {
     initWebGL(state, webgl) {
       state.webgl = webgl;
+    },
+    setAudioState(state, bool) {
+      state.isAudioPlaying = bool;
     },
     showPreloader(state) {
       state.isShownPreloader = true;

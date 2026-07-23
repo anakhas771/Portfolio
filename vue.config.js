@@ -16,7 +16,7 @@ module.exports = {
     themeColor: '#1b191c',
     msTileColor: '#1b191c',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'black',
+    appleMobileWebAppStatusBarStyle: 'black'
   },
   configureWebpack: {
     module: {
