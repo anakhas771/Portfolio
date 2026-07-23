@@ -28,7 +28,10 @@ export default {
 <template lang="pug">
   .preloader-progress
     .preloader-progress__inner.
-      <svg xmlns="http://www.w3.org/2000/svg" width="252" height="252" viewBox="0 0 252 252">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="252" height="252" viewBox="0 0 252 252">
+        <defs>
+          <path id="text-circle-path" d="M 126, 126 m -98, 0 a 98,98 0 1,1 196,0 a 98,98 0 1,1 -196,0"/>
+        </defs>
         <g mask="url(#mask-text)">
           <mask id="mask-rotate">
             <g class="mask-rotate-group">
@@ -41,11 +44,10 @@ export default {
           <path fill="#dcc5a2" mask="url(#mask-rotate)" d="M0 0h252v252H0z"/>
         </g>
         <mask id="mask-text">
-          <path d="M0 0h252v252H0z"/>
-          <path id="text-circle-path" d="M 126, 126 m -96, 0 a 96,96 0 1,1 192,0 a 96,96 0 1,1 -192,0" fill="none"/>
-          <text fill="#ffffff" font-size="11" font-weight="700" letter-spacing="4" font-family="'Inter', sans-serif, system-ui">
+          <path fill="#000000" d="M0 0h252v252H0z"/>
+          <text fill="#ffffff" font-size="10.5" font-weight="700" letter-spacing="1.8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
             <textPath href="#text-circle-path" xlink:href="#text-circle-path">
-              ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER 
+              ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER • ANAKHA • CONTENT CREATOR • ANAKHA 
             </textPath>
           </text>
         </mask>
