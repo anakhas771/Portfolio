@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+![ogp image](https://github.com/ykob/tplh.net-2019/blob/master/public/img/ogp_image.png)
 
-## Getting Started
+# tplh.net
 
-First, run the development server:
+https://www.tplh.net/  
+I'm a Web Developer. Just love World-Wide-Web.  
+I explored what my identity was and tried to express it as much as possible using whatever technology I have now.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## License
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Copyright (c) 2020 Yoichi Kobayashi  
+You can refer to these codes and materials, but can't use or quote these for your projects for free.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Credits
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 3D Models : CGTrader
+  - [Low Poly Skull Human VR / AR / low-poly 3d model](https://www.cgtrader.com/3d-models/character/anatomy/low-poly-skull-human)
+  - [Petals pack 3D model](https://www.cgtrader.com/3d-models/plant/flower/flying-rose-petals)
+- Design : Shunsuke Iseki
+- Development : Anakha S
 
-## Learn More
+## Misc
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Follow Anakha S: [GitHub](https://github.com/anakhas771), [LinkedIn](https://www.linkedin.com/in/anakha-s-a76081356/)
