@@ -39,6 +39,9 @@ export default {
     };
   },
   async created() {
+    if (this.$route.path !== '/') {
+      this.$router.replace('/').catch(() => {});
+    }
     const { state, commit, dispatch } = this.$store;
 
     const tryPlay = () => {
