@@ -7,6 +7,7 @@ import UtilityNavi from '@/components/global/UtilityNavi.vue';
 import WorksNavi from '@/components/global/WorksNavi.vue';
 import Preloader from '@/components/global/Preloader.vue';
 import Guide from '@/components/global/Guide.vue';
+import SplashCursor from '@/components/global/SplashCursor.vue';
 
 export default {
   name: 'App',
@@ -25,7 +26,8 @@ export default {
     UtilityNavi,
     WorksNavi,
     Preloader,
-    Guide
+    Guide,
+    SplashCursor
   },
   data() {
     return {
@@ -254,6 +256,17 @@ export default {
 
 <template lang="pug">
   div
+    SplashCursor(
+      v-if="$route.name !== 'home'"
+      :DENSITY_DISSIPATION="4"
+      :VELOCITY_DISSIPATION="3"
+      :CURL="44"
+      :SPLAT_RADIUS="0.09"
+      :SPLAT_FORCE="6500"
+      :COLOR_UPDATE_SPEED="16"
+      :SHADING="false"
+      COLOR="#DFC7A4"
+    )
     audio#bgm-player(src="/music/background.mp3" loop preload="auto")
     GlobalTitle
     UtilityNavi
