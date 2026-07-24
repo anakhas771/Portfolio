@@ -25,8 +25,6 @@ export default {
   @include l-more-than-mobile {
     padding-left: math.div(500, 1360) * 100%;
   }
-  @include l-mobile {
-  }
   &__line {
     @include l-more-than-mobile {
       width: calc(360 / 1360 * 100% - 20px);
@@ -35,8 +33,6 @@ export default {
       top: 1em;
       left: 0;
       background-color: rgba(#dfc7a4, 0.3);
-    }
-    @include l-mobile {
     }
   }
   &__heading {
@@ -49,10 +45,6 @@ export default {
       top: 0;
       left: math.div(360, 1360) * 100%;
     }
-    @include l-mobile {
-    }
-  }
-  &__text {
   }
 
   // Transition
