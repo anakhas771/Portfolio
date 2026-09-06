@@ -113,7 +113,7 @@ export default {
       this.update();
       state.webgl.start();
     } catch (error) {
-      console.error('WebGL initialization failed:', error);
+      // WebGL initialization failed, so show the site without WebGL.
 
       // Don't leave the user trapped in the preloader
       commit('loaded');
