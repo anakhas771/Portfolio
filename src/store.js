@@ -134,11 +134,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    async initWebGL(context) {
-      await import('@/webgl/').then(module => {
-        const webgl = new module.default();
-        context.commit('initWebGL', webgl);
-      });
+    async initWebGL({ commit }) {
+      const module = await import('@/webgl/');
+      const webgl = new module.default();
+
+      commit('initWebGL', webgl);
+
+      await webgl.start();
+
+      return webgl;
     },
     debounceRouterPush(context, url) {
       if (context.state.isTransition === true) return;
