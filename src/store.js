@@ -138,9 +138,10 @@ export default new Vuex.Store({
       const module = await import('@/webgl/');
       const webgl = new module.default();
 
-      commit('initWebGL', webgl);
-
+      // Fully initialize WebGL before exposing it to the application.
       await webgl.start();
+
+      commit('initWebGL', webgl);
 
       return webgl;
     },
