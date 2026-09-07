@@ -142,7 +142,7 @@ export default class WebGLContent {
       require(`@/assets/img/webgl/whoiam_text.${webpExe}`),
 
       // Project thumbnails
-      require(`@/assets/img/webgl/thumb_blank.${webpExe}`),
+      require('@/assets/img/webgl/thumb_blank.png'),
       require('@/assets/img/webgl/thumb_ai_incident_response.png'),
       require('@/assets/img/webgl/thumb_motionforge.png'),
       require('@/assets/img/webgl/thumb_knowledgeos.png')

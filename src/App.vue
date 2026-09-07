@@ -114,6 +114,7 @@ export default {
       state.webgl.start();
     } catch (error) {
       // WebGL initialization failed, so show the site without WebGL.
+      window.__WEBGL_ERROR__ = error;
 
       // Don't leave the user trapped in the preloader
       commit('loaded');
