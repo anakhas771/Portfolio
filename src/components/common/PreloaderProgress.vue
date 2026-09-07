@@ -28,7 +28,7 @@ export default {
 <template lang="pug">
   .preloader-progress
     .preloader-progress__inner.
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="252" height="252" viewBox="0 0 252 252">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 252 252">
         <defs>
           <path id="text-circle-path" d="M 126, 126 m -98, 0 a 98,98 0 1,1 196,0 a 98,98 0 1,1 -196,0"/>
         </defs>
@@ -52,6 +52,7 @@ export default {
           </text>
         </mask>
       </svg>
+
 </template>
 
 <style lang="scss">
@@ -98,17 +99,10 @@ export default {
   }
   svg {
     display: block;
+    width: 100%;
+    height: 100%;
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
-
-    @include l-more-than-mobile {
-      width: 252px;
-      height: 252px;
-    }
-    @include l-mobile {
-      width: 150px;
-      height: 150px;
-    }
   }
   .mask-rotate-group {
     transform: rotate(34deg);
