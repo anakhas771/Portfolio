@@ -1,6 +1,7 @@
 <script>
 import * as THREE from 'three';
 import { debounce, sleep } from '@ykob/js-util';
+import { inject } from '@vercel/analytics';
 
 import GlobalTitle from '@/components/global/GlobalTitle.vue';
 import UtilityNavi from '@/components/global/UtilityNavi.vue';
@@ -39,6 +40,9 @@ export default {
     };
   },
   async created() {
+    // Initialize Vercel Analytics
+    inject();
+
     if (this.$route.path !== '/') {
       this.$router.replace('/').catch(() => {});
     }
