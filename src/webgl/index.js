@@ -145,7 +145,8 @@ export default class WebGLContent {
       require('@/assets/img/webgl/thumb_blank.png'),
       require('@/assets/img/webgl/thumb_ai_incident_response.png'),
       require('@/assets/img/webgl/thumb_motionforge.png'),
-      require('@/assets/img/webgl/thumb_knowledgeos.png')
+      require('@/assets/img/webgl/thumb_knowledgeos.png'),
+      require('@/assets/img/webgl/thumb_hope.png')
     ];
     store.commit('setPreloadMax', assetsObj.length + assetsImgs.length);
 
