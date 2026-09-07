@@ -86,24 +86,27 @@ export default {
   animation-iteration-count: infinite;
 
   @include l-more-than-mobile {
-    width: 190px;
-    height: 190px;
-    top: calc(50% - 95px);
-    left: calc(50% - 95px);
+    width: 200px;
+    height: 200px;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
   }
 
   @include l-mobile {
-    width: 120px;
-    height: 120px;
-    top: calc(50% - 60px);
-    left: calc(50% - 60px);
+    width: 140px;
+    height: 140px;
+    top: calc(50% - 70px);
+    left: calc(50% - 70px);
   }
 
   &__inner {
     width: 100%;
     height: 100%;
 
-    // Enter animation
+    //
+    // transition
+    // ==========
+
     .preloader-enter & {
       opacity: 0;
       transform: scale(0.6);
@@ -117,7 +120,6 @@ export default {
       transition-property: opacity, transform;
     }
 
-    // Leave animation
     .preloader-leave-to & {
       opacity: 0;
       transform: scale(1.8);
@@ -130,15 +132,28 @@ export default {
 
   svg {
     display: block;
+
     width: 100%;
     height: 100%;
-    overflow: visible;
+
+    /*
+     * Keep the original 252 × 252 SVG
+     * geometry intact and scale it uniformly.
+     */
+    max-width: 252px;
+    max-height: 252px;
+
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
   }
 
-  text {
-    dominant-baseline: auto;
+  .mask-rotate-group {
+    transform: rotate(34deg);
+    transform-origin: center center;
+  }
+
+  .mask-rotate-rect {
+    transform-origin: center center;
   }
 }
 </style>
