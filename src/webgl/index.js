@@ -310,6 +310,18 @@ export default class WebGLContent {
   resize() {
     const { resolution } = store.state;
 
+    if (
+      !renderer ||
+      !this.camera ||
+      !this.skull ||
+      !this.title ||
+      !this.image ||
+      !this.bg ||
+      !this.intersector
+    ) {
+      return;
+    }
+
     this.camera.resize();
     this.skull.resize();
     this.title.resize();
