@@ -124,9 +124,9 @@ export default {
       .p-work-outline__description.p-work-outline__elm
         |{{ description }}
       .p-work-outline__credit.p-work-outline__elm
-        |Credits
+        |Skills & Tools
         br
-        |{{ credit }}
+        |{{ skills }}
     .p-work-outline__link-wrap(
       :style = 'linkWrapStyles'
       )

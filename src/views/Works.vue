@@ -152,7 +152,7 @@ export default {
       :index = 'index'
       :title = 'item.title'
       :description = 'item.description'
-      :credit = 'item.credit'
+      :skills = 'item.skills'
       :href = 'item.href'
       )
 </template>
