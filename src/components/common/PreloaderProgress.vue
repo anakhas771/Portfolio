@@ -47,7 +47,7 @@ export default {
           <path fill="#000000" d="M0 0h252v252H0z"/>
           <text fill="#ffffff" font-size="10.5" font-weight="700" letter-spacing="1.8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
             <textPath href="#text-circle-path" xlink:href="#text-circle-path">
-              ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER • ANAKHA 
+              ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER 
             </textPath>
           </text>
         </mask>
@@ -62,16 +62,16 @@ export default {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   @include l-more-than-mobile {
-    width: 252px;
-    height: 252px;
-    top: calc(50% - 126px);
-    left: calc(50% - 126px);
+    width: 190px;
+    height: 190px;
+    top: calc(50% - 95px);
+    left: calc(50% - 95px);
   }
   @include l-mobile {
-    width: 150px;
-    height: 150px;
-    top: calc(50% - 75px);
-    left: calc(50% - 75px);
+    width: 120px;
+    height: 120px;
+    top: calc(50% - 60px);
+    left: calc(50% - 60px);
   }
   &__inner {
     //
@@ -98,22 +98,17 @@ export default {
   }
   svg {
     display: block;
+    width: 100%;
+    height: 100%;
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
-
-    @include l-more-than-mobile {
-      width: 252px;
-      height: 252px;
-    }
-    @include l-mobile {
-      width: 150px;
-      height: 150px;
-    }
   }
+
   .mask-rotate-group {
     transform: rotate(34deg);
     transform-origin: center center;
   }
+
   .mask-rotate-rect {
     transform-origin: center center;
   }
