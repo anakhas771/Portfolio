@@ -112,7 +112,7 @@ export default {
             href="#text-circle-path"
             xlink:href="#text-circle-path"
           >
-            ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER • STUDIO •
+            ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER • STUDIO • CREATIVE •
           </textPath>
         </text>
 
