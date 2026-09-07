@@ -59,7 +59,7 @@ export default {
       type: String,
       default: ''
     },
-    credit: {
+    skills: {
       type: String,
       default: ''
     },
