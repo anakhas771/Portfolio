@@ -143,9 +143,9 @@ export default class WebGLContent {
 
       // Project thumbnails
       require(`@/assets/img/webgl/thumb_blank.${webpExe}`),
-      require(`@/assets/img/webgl/thumb_ai_incident_response.${webpExe}`),
-      require(`@/assets/img/webgl/thumb_motionforge.${webpExe}`),
-      require(`@/assets/img/webgl/thumb_knowledgeos.${webpExe}`)
+      require('@/assets/img/webgl/thumb_ai_incident_response.png'),
+      require('@/assets/img/webgl/thumb_motionforge.png'),
+      require('@/assets/img/webgl/thumb_knowledgeos.png')
     ];
     store.commit('setPreloadMax', assetsObj.length + assetsImgs.length);
 
@@ -309,6 +309,18 @@ export default class WebGLContent {
   }
   resize() {
     const { resolution } = store.state;
+
+    if (
+      !renderer ||
+      !this.camera ||
+      !this.skull ||
+      !this.title ||
+      !this.image ||
+      !this.bg ||
+      !this.intersector
+    ) {
+      return;
+    }
 
     this.camera.resize();
     this.skull.resize();
