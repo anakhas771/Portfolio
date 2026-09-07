@@ -1,5 +1,5 @@
 <script>
-const YEAR_PREV = 2019;
+const YEAR_PREV = 2002;
 const YEAR_NEXT = 2026;
 
 const makeDigitArr = (prev, next, colIdx) => {

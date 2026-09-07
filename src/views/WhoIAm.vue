@@ -180,15 +180,13 @@ export default {
         p
           |My career as a web developer started in 2019.
         p
-          |As a teenager, when I discovered coding and thought, "Hmm… this looks interesting. How hard could it be?". Then I discovered web design and, naturally, thought, "Why not make things look good while breaking the code?"
+          |It started back in 2019 with a dangerously simple thought: "Hmm… this looks interesting. How hard could it be?" Like a moth drawn to the glowing light of a monitor, I discovered coding. Shortly after, I stumbled into the visual side of the web and naturally concluded, "Why not make things look ridiculously good while I’m busy breaking the logic?" I didn't know it yet, but the World Wide Web had just claimed another soul.
         p
-          |Like almost every developer on the planet, I started with YouTube tutorials. One tutorial became ten, ten became a hundred, and somewhere along the way, I realized I wasn't actually terrible at it. So I decided to take this whole thing seriously.
+          |Like almost every developer on the planet, my initiation involved falling down the endless rabbit hole of YouTube tutorials. One video turned into ten, ten morphed into a hundred, and somewhere amidst the glowing syntax and chaotic browser tabs, a strange realization hit me: I actually wasn't terrible at this. It was time to take it seriously.
         p
-          |I joined the Indira Gandhi Institute of Engineering and Technology, Ernakulam, where I pursued my B.Tech in Computer Science from 2021 to 2025. After surviving college, assignments, deadlines, and the occasional "it works on my machine" moment, I landed my first internship as a Python Full Stack Developer.
-        p
-          |Good years, honestly.
-        p
-          |Then burnout showed up uninvited, made itself comfortable, and apparently had no plans of leaving.
+          |That ambition led me to the Indira Gandhi Institute of Engineering and Technology for my B.Tech in Computer Science. From 2021 to 2025, I survived the gauntlet of college—the ruthless deadlines, the cryptic assignments, and the classic, soul-crushing "I swear it works on my machine" moments. Emerging from that trial by fire, I landed my first internship as a Python Full Stack Developer. Honestly, those were deeply rewarding years. I was building, shipping, and thriving.
+
+          |And then, burnout showed up. It arrived uninvited, kicked off its shoes, made itself comfortable, and clearly had zero intentions of leaving. Everything ground to a halt. I found myself staring at empty IDEs, completely disconnected, forced to question my entire identity as a developer.
       WhoIAmSection(
         :num = '2'
         )
@@ -199,11 +197,11 @@ export default {
         p
           |So I did what any reasonable developer would do: disappeared into the world of code and started learning again. And somewhere along the way, things got interesting again.
         p
-          |Now I'm fascinated by the entire process—from design and animation to frontend development,backend logic, databases, APIs, and deployment. Basically, if it involves turning an idea into something that actually works on the internet, I'm probably interested.
+          |Today, I am absolutely fascinated by the entire lifecycle of creation. From wireframe designs and buttery-smooth animations to bulletproof backend logic, relational databases, APIs, and deployment—if it involves wrestling an abstract idea into a living, breathing internet experience, I’m in. 
         p
-          |My current toolkit includes Python, Django, Django REST Framework, React, JavaScript, PostgreSQL, Git, GitHub. I'm also constantly experimenting with GSAP, Framer Motion, smooth scrolling, interactive animations, and modern UI design — because apparently, making a button move slightly when you hover over it is now a personality trait.
+          |My daily arsenal runs on Python, Django, React, and PostgreSQL, backed by Git and GitHub. Lately, I’m constantly experimenting with GSAP, Framer Motion, and the dark art of modern UI design. Because, let’s be honest, making a button do a microscopic, deeply satisfying bounce when you hover over it is basically a personality trait at this point.
         p
-          |I enjoy building things that are functional, visually engaging, and a little more interesting than they need to be.
+          |I build digital experiences that are functional, visually arresting, and just a little more extra than they strictly need to be.
       WhoIAmSection(
         :num = '3'
         :scrollY = 'scrollY'

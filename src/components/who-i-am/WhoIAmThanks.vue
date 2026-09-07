@@ -7,16 +7,21 @@ export default {
 <template lang="pug">
   .p-whoiam-credit
     .p-whoiam-credit__line
+
     h2.p-whoiam-credit__heading
-      |Skillset -
+      |Skill set -
+
     p.p-whoiam-credit__text
-      |Frontend : React, JavaScript, HTML, CSS, Tailwind CSS, GSAP, Framer Motion, smooth scrolling, interactive animations, modern UI design
+      |Frontend : React, Next.js, JavaScript, TypeScript, HTML, CSS, Tailwind CSS, GSAP, Framer Motion, Responsive Design, Interactive UI, Web Animations
       br
       br
-      |Backend : Python, Django, Django REST Framework, Git, GitHub, PostgreSQL, MySQL
+      |Backend : Python, Django, Django REST Framework, REST APIs, PostgreSQL, MySQL, Redis, Celery
       br
       br
-      |Tools : Git, GitHub, VS Code, Pycharm, AWS, Antigravity, claude
+      |AI & Data : RAG, Semantic Search, Knowledge Graphs, AI Agents, FAISS, OpenSearch
+      br
+      br
+      |DevOps & Tools : Git, GitHub, Docker, AWS, Vercel, VS Code, PyCharm, Postman
 </template>
 
 <style lang="scss">

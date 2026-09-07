@@ -11,7 +11,7 @@ export default {
         |A
     .preloader-initial__typo.preloader-initial__typo--2
       .preloader-initial__typo-in.preloader-initial__typo-in--2
-        |S
+        |K
 </template>
 
 <style lang="scss">
