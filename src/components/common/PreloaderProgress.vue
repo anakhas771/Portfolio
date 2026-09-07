@@ -10,13 +10,25 @@ export default {
         return 0;
       }
 
-      return Math.min(1, Math.max(0, preloadProgress / preloadMax));
+      return Math.min(preloadProgress / preloadMax, 1);
     },
 
-    progressDashOffset() {
-      const circumference = 2 * Math.PI * 98;
+    stylesRightRect() {
+      return {
+        opacity: this.ratio >= 0.5 ? 1 : 0
+      };
+    },
 
-      return circumference * (1 - this.ratio);
+    stylesLeftRect() {
+      return {
+        opacity: this.ratio >= 0.5 ? 0 : 1
+      };
+    },
+
+    stylesRotateRect() {
+      return {
+        transform: `rotate(${this.ratio * 354}deg)`
+      };
     }
   }
 };
@@ -24,56 +36,88 @@ export default {
 
 <template lang="pug">
 .preloader-progress
-  .preloader-progress__inner
-    svg(
+  .preloader-progress__inner.
+    <svg
       xmlns="http://www.w3.org/2000/svg"
       xmlns:xlink="http://www.w3.org/1999/xlink"
       width="252"
       height="252"
       viewBox="0 0 252 252"
-    )
-      defs
-        path#text-circle-path(
+    >
+      <defs>
+        <path
+          id="text-circle-path"
           d="M 126,126 m -98,0 a 98,98 0 1,1 196,0 a 98,98 0 1,1 -196,0"
-        )
+        />
+      </defs>
 
-      //- Background circle
-      circle(
-        cx="126"
-        cy="126"
-        r="98"
-        fill="none"
-        stroke="#564e45"
-        stroke-width="4"
-      )
+      <!-- Circular progress -->
+      <g mask="url(#mask-text)">
+        <mask id="mask-rotate">
+          <g class="mask-rotate-group">
 
-      //- Loading progress circle
-      circle(
-        cx="126"
-        cy="126"
-        r="98"
-        fill="none"
-        stroke="#dcc5a2"
-        stroke-width="4"
-        stroke-linecap="butt"
-        :stroke-dasharray="2 * Math.PI * 98"
-        :stroke-dashoffset="progressDashOffset"
-        transform="rotate(-90 126 126)"
-      )
+            <path
+              class="mask-rotate-rect"
+              :style="stylesRotateRect"
+              fill="#ffffff"
+              d="M0 0h126v252H0z"
+            />
 
-      //- Complete circular text
-      text(
-        fill="#ffffff"
-        font-size="10.5"
-        font-weight="700"
-        letter-spacing="1.8"
-        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
-      )
-        textPath(
-          href="#text-circle-path"
-          xlink:href="#text-circle-path"
-        )
-          | ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER
+            <path
+              :style="stylesLeftRect"
+              d="M0 0h126v252H0z"
+            />
+
+            <path
+              :style="stylesRightRect"
+              fill="#ffffff"
+              d="M126 0h126v252H126z"
+            />
+
+          </g>
+        </mask>
+
+        <!-- Base color -->
+        <path
+          fill="#564e45"
+          d="M0 0h252v252H0z"
+        />
+
+        <!-- Progress color -->
+        <path
+          fill="#dcc5a2"
+          mask="url(#mask-rotate)"
+          d="M0 0h252v252H0z"
+        />
+      </g>
+
+      <!-- Circular typography mask -->
+      <mask id="mask-text">
+
+        <!-- Hide everything -->
+        <path
+          fill="#000000"
+          d="M0 0h252v252H0z"
+        />
+
+        <!-- Circular text -->
+        <text
+          fill="#ffffff"
+          font-size="10.5"
+          font-weight="700"
+          letter-spacing="1.8"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+        >
+          <textPath
+            href="#text-circle-path"
+            xlink:href="#text-circle-path"
+          >
+            ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER •
+          </textPath>
+        </text>
+
+      </mask>
+    </svg>
 </template>
 
 <style lang="scss">
@@ -86,17 +130,17 @@ export default {
   animation-iteration-count: infinite;
 
   @include l-more-than-mobile {
-    width: 200px;
-    height: 200px;
-    top: calc(50% - 100px);
-    left: calc(50% - 100px);
+    width: 252px;
+    height: 252px;
+    top: calc(50% - 126px);
+    left: calc(50% - 126px);
   }
 
   @include l-mobile {
-    width: 140px;
-    height: 140px;
-    top: calc(50% - 70px);
-    left: calc(50% - 70px);
+    width: 150px;
+    height: 150px;
+    top: calc(50% - 75px);
+    left: calc(50% - 75px);
   }
 
   &__inner {
@@ -104,9 +148,8 @@ export default {
     height: 100%;
 
     //
-    // transition
-    // ==========
-
+    // Enter animation
+    // ==============
     .preloader-enter & {
       opacity: 0;
       transform: scale(0.6);
@@ -115,14 +158,19 @@ export default {
     .preloader-enter-to & {
       opacity: 1;
       transform: scale(1);
+
       transition-duration: 1.4s;
       transition-timing-function: $easeOutCirc;
       transition-property: opacity, transform;
     }
 
+    //
+    // Leave animation
+    // =============
     .preloader-leave-to & {
       opacity: 0;
       transform: scale(1.8);
+
       transition-duration: 1.4s;
       transition-delay: 0.8s;
       transition-timing-function: $easeInExpo;
@@ -136,17 +184,23 @@ export default {
     width: 100%;
     height: 100%;
 
-    /*
-     * Keep the original 252 × 252 SVG
-     * geometry intact and scale it uniformly.
-     */
-    max-width: 252px;
-    max-height: 252px;
-
     backface-visibility: hidden;
     transform: translate3d(0, 0, 0);
+
+    @include l-more-than-mobile {
+      width: 252px;
+      height: 252px;
+    }
+
+    @include l-mobile {
+      width: 150px;
+      height: 150px;
+    }
   }
 
+  //
+  // Progress rotation
+  // =================
   .mask-rotate-group {
     transform: rotate(34deg);
     transform-origin: center center;
