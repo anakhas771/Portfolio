@@ -32,5 +32,16 @@ export default [
       'Python · Django REST Framework · React · PostgreSQL · RAG · Semantic Search · Knowledge Graph · FAISS · OpenSearch · Redis · Celery · Docker',
     href: 'https://github.com/anakhas771/KnowledgeOS',
     textWidth: 1720
+  },
+  {
+    key: 'Hope - Hospital Management System ',
+    title: 'Hope - Hospital Management System ',
+    shortTitle: 'Hope - Hospital Management System ',
+    description:
+      'A modern full-stack hospital management platform built with **React** and **Django REST Framework**, providing secure authentication, doctor appointment booking, online payments, and an interactive admin dashboard with real-time analytics.',
+    skills:
+      'Python · Django REST Framework · React · PostgreSQL · JavaScript · Tailwind ',
+    href: 'https://github.com/anakhas771/Hope---Hospital-Management-',
+    textWidth: 1720
   }
 ];
