@@ -140,12 +140,12 @@ export default class WebGLContent {
       require(`@/assets/img/webgl/noise_burn.${webpExe}`),
       require(`@/assets/img/webgl/works_text.${webpExe}`),
       require(`@/assets/img/webgl/whoiam_text.${webpExe}`),
-      require('@/assets/img/webgl/thumb_blank.png'),
-      require(`@/assets/img/webgl/thumb_sketch_threejs.${webpExe}`),
-      require(`@/assets/img/webgl/thumb_warpdrive.${webpExe}`),
-      require(`@/assets/img/webgl/thumb_hassyadai.${webpExe}`),
-      require(`@/assets/img/webgl/thumb_imago.${webpExe}`),
-      require(`@/assets/img/webgl/thumb_best_film_2018.${webpExe}`)
+
+      // Project thumbnails
+      require(`@/assets/img/webgl/thumb_blank.${webpExe}`),
+      require(`@/assets/img/webgl/thumb_ai_incident_response.${webpExe}`),
+      require(`@/assets/img/webgl/thumb_motionforge.${webpExe}`),
+      require(`@/assets/img/webgl/thumb_knowledgeos.${webpExe}`)
     ];
     store.commit('setPreloadMax', assetsObj.length + assetsImgs.length);
 
