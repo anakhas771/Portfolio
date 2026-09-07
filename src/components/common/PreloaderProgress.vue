@@ -47,7 +47,7 @@ export default {
           <path fill="#000000" d="M0 0h252v252H0z"/>
           <text fill="#ffffff" font-size="10.5" font-weight="700" letter-spacing="1.8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
             <textPath href="#text-circle-path" xlink:href="#text-circle-path">
-              ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER • ANAKHA • CONTENT CREATOR
+              ANAKHA • DEVELOPER • ANAKHA • DESIGNER • ANAKHA • ENGINEER • ANAKHA 
             </textPath>
           </text>
         </mask>
