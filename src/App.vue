@@ -102,9 +102,23 @@ export default {
 
     await sleep(500);
     commit('showPreloader');
-    this.update();
-    await dispatch('initWebGL');
-    state.webgl.start();
+
+    try {
+      await dispatch('initWebGL');
+
+      if (!state.webgl) {
+        throw new Error('WebGL failed to initialize');
+      }
+
+      this.update();
+      state.webgl.start();
+    } catch (error) {
+      // WebGL initialization failed, so show the site without WebGL.
+
+      // Don't leave the user trapped in the preloader
+      commit('loaded');
+      commit('showView');
+    }
   },
   destroyed() {
     this.$root.$off('toggle-audio', this.toggleAudio);
@@ -137,34 +151,45 @@ export default {
       return this.bgm;
     },
     update() {
-      const { commit } = this.$store;
-      const {
-        webgl,
-        preloadMax,
-        preloadProgress,
-        isLoaded
-      } = this.$store.state;
+      const { commit, state } = this.$store;
+
+      const { webgl, preloadMax, preloadProgress, isLoaded } = state;
+
+      if (!webgl) {
+        return;
+      }
+
       if (isLoaded === false) {
         commit('updatePreloadProgress');
-        if (preloadProgress / preloadMax > 0.999) {
+
+        if (preloadMax > 0 && preloadProgress / preloadMax > 0.999) {
           this.loaded();
         }
       } else {
         webgl.update();
       }
+
       requestAnimationFrame(this.update);
     },
     async loaded() {
       const { state, commit } = this.$store;
 
-      this.resize();
+      if (state.webgl) {
+        this.resize();
+      }
+
       commit('loaded');
+
       if (this.$route.name === 'home') {
         await sleep(800);
       } else {
         await sleep(2400);
       }
-      state.webgl.play();
+
+      if (state.webgl) {
+        state.webgl.play();
+      }
+
       commit('showView');
     },
     toggleAudio() {
@@ -192,7 +217,9 @@ export default {
       canvas.width = resolution.x;
       canvas.height = resolution.y;
       commit('changeMediaQuery', resolution.x < 768);
-      webgl.resize();
+      if (webgl) {
+        webgl.resize();
+      }
     },
     mousemove(e) {
       const { state } = this.$store;
