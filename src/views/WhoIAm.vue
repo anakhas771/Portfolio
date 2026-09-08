@@ -177,8 +177,7 @@ export default {
           |I'm a Software Developer.
           br
           |Just love World-Wide-Web.
-        p
-          |My career as a web developer started in 2019.
+          
         p
           |It started back in 2019 with a dangerously simple thought: "Hmm… this looks interesting. How hard could it be?" Like a moth drawn to the glowing light of a monitor, I discovered coding. Shortly after, I stumbled into the visual side of the web and naturally concluded, "Why not make things look ridiculously good while I’m busy breaking the logic?" I didn't know it yet, but the World Wide Web had just claimed another soul.
         p
