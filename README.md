@@ -2,7 +2,7 @@
 
 > An interactive developer portfolio showcasing frontend engineering, full-stack applications, AI-powered systems, and experimental web experiences.
 
-🌐 **Live Portfolio:** https://portfolio-bsqc.vercel.app/
+🌐 **Live Portfolio:** https://anakha-portfolio.vercel.app/
 
 💼 **LinkedIn:** https://www.linkedin.com/in/anakha-s-a76081356/
 
@@ -469,7 +469,7 @@ Local Development
 
 ### Production
 
-🌐 https://portfolio-bsqc.vercel.app/
+🌐 https://anakha-portfolio.vercel.app/
 
 ---
 
@@ -578,7 +578,7 @@ https://www.linkedin.com/in/anakha-s-a76081356/
 https://github.com/anakhas771
 
 🌐 **Portfolio**  
-https://portfolio-bsqc.vercel.app/
+https://anakha-portfolio.vercel.app/
 
 ---
 
